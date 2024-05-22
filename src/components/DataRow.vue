@@ -8,6 +8,7 @@
     <td>
       <span v-if="employee.fired">уволен</span>
     </td>
+    <button @click="updateFired">Уволить</button>
   </tr>
 </template>
 
@@ -25,7 +26,10 @@ export default {
     },
     formatGender(gender) {
       return gender ? 'женский' : 'мужской';
-    }
+    },
+    updateFired() {
+      this.$emit('update-fired', this.employee);
+    },
   }
 };
 </script>
