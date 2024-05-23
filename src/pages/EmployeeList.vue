@@ -63,7 +63,6 @@ export default {
     };
   },
   created() {
-    // Если есть новый сотрудник в параметрах маршрута, добавьте его в массив сотрудников
     if (this.$route.params.newEmployee) {
       const newEmployee = this.$route.params.newEmployee;
       this.employees.push(newEmployee);
