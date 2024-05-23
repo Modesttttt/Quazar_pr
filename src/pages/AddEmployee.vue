@@ -13,7 +13,7 @@
     components: {NewEmployeeForm },
     methods: {
       onEmployeeAdded(newEmployee) {
-        this.$router.push({ name: 'employee-list', params: { newEmployee } });
+        this.$router.push({ name: 'EmployeeList', params: { newEmployee } });
       },
     },
   };

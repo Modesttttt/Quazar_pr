@@ -7,13 +7,20 @@
       <filter-form v-if="showFilterForm" @apply-filter="applyFilter" />
       <table>
         <thead>
-          
+          <tr>
+            <th> Имя</th>
+            <th> Пол</th>
+            <th> Дата рождения</th>
+            <th> Организация</th>
+            <th> Должность</th>
+          </tr>
         </thead>
         <tbody> 
           <data-row 
             v-for="employee in filteredEmployees"
             :key="employee.name" 
             :employee="employee"
+            :id="employee.id"
             @update-fired="updateFired"
           />
         </tbody> 
@@ -28,7 +35,9 @@
    import NewEmployeeForm from '../components/NewEmployeeForm.vue'
    import FilterForm from '../components/FilterForm.vue'
    import { employees } from '../data/employees.js'
-   
+   employees.forEach((employee, index=0) => {
+    employee.id = index + 1; 
+   });
    export default {
     components: { DataRow, NewEmployeeForm, FilterForm},
     data() {
@@ -58,7 +67,9 @@
       updateFired(employee) {
         const index = this.employees.findIndex(e => e.name === employee.name);
         this.employees[index].fired = true;
+        this.$router.push({ name: 'FiredEmployees' });
       },
+      
       toggleFilterForm() {
       this.showFilterForm = !this.showFilterForm;
       },

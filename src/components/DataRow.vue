@@ -1,5 +1,5 @@
 <template>
-  <tr>
+  <tr @click="viewEmployeeDetails">
     <td>{{ employee.name }}</td>
     <td>{{ formatGender(employee.sex) }}</td>
     <td>{{ formatDate(employee.birth_date) }}</td>
@@ -21,8 +21,7 @@ export default {
   },
   methods: {
     formatDate(value) {
-      const date = dayjs.unix(value);
-      return date.format('DD.MM.YYYY');
+      return dayjs(value).format('DD.MM.YYYY');
     },
     formatGender(gender) {
       return gender ? 'женский' : 'мужской';
@@ -30,6 +29,10 @@ export default {
     updateFired() {
       this.$emit('update-fired', this.employee);
     },
+    viewEmployeeDetails() {
+      this.$router.push({ name: 'employee-details', params: { id: this.employee.id } });
+    },
+
   }
 };
 </script>
