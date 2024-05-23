@@ -1,28 +1,32 @@
 <template>
-    <div v-if="showForm" class="wrapper">
-      <h2>Добавление нового сотрудника</h2>
-      <form @submit.prevent="addEmployee">
+  <div v-if="showForm" class="wrapper">
+    <h2>Добавление нового сотрудника</h2>
+    <form @submit.prevent="addEmployee">
+      <!-- Поле для ввода имени -->
+      <input v-model="newEmployee.name" type="text" placeholder="Имя" required />
+      <!-- Выбор пола -->
+      <select v-model="newEmployee.sex" required>
+        <option value="" disabled selected hidden>Выберите пол</option>
+        <option value="0">Мужской</option>
+        <option value="1">Женский</option>
+      </select>
+      <!-- Ввод даты рождения -->
+      <input v-model="newEmployee.birth_date" type="date" required />
+      <!-- Ввод организации -->
+      <input v-model="newEmployee.organisation" type="text" placeholder="Организация" required />
+      <!-- Ввод должности -->
+      <input v-model="newEmployee.job_title" type="text" placeholder="Должность" required />
+      <!-- Выбор статуса увольнения -->
+      <select v-model="newEmployee.fired" required>
+        <option value="" disabled selected hidden>Статус</option>
+        <option value="true">Уволен</option>
+        <option value="false">Нет</option>
+      </select>
 
-        <input v-model="newEmployee.name" type="text" placeholder="Имя" required>
-        <select v-model="newEmployee.sex" required>
-            <option value="" disabled selected hidden>Выберите пол</option>
-            <option value="0">Мужской</option>
-            <option value="1">Женский</option>
-        </select>
-        <input v-model="newEmployee.birth_date" type="date" required>
-        <input v-model="newEmployee.organisation" type="text" placeholder="Организация" required>
-        <input v-model="newEmployee.job_title" type="text" placeholder="Должность" required>
-        <select v-model="newEmployee.fired" required>
-            <option value="" disabled selected hidden>Статус</option>
-            <option value="true">Уволен</option>
-            <option value="false">Нет</option>
-        </select>
-
-   
-        <button type="submit">Добавить</button>
-      </form>
-    </div>
-  </template>
+      <button type="submit">Добавить</button>
+    </form>
+  </div>
+</template>
   
   <script>
   export default {

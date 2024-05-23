@@ -1,21 +1,26 @@
 <template>
     <form @submit.prevent="applyFilter" class="filter-form">
+      <!-- Поле для ввода ФИО -->
       <div>
         <label>ФИО</label>
         <input v-model="filter.name" type="text" />
       </div>
+      <!-- Поле для выбора пола -->
       <div>
         <label>Пол</label>
         <input v-model="filter.gender" type="checkbox" value="0" /> Мужской
         <input v-model="filter.gender" type="checkbox" value="1" /> Женский
       </div>
+      <!-- Поле для ввода названия организации -->
       <div>
         <label>Организация</label>
         <input v-model="filter.organisation" type="text" />
       </div>
+      <!-- Поле для выбора должности -->
       <div>
         <label>Должность</label>
         <select v-model="filter.job_title">
+          <!-- Варианты выбора должности -->
             <option value="Водитель">Водитель</option>
             <option value="Грузчик">Грузчик</option>
             <option value="Врач">Врач</option>
@@ -37,6 +42,7 @@
   export default {
     data() {
       return {
+        // Объект фильтра с начальными значениями
         filter: {
           name: '',
           gender: [],

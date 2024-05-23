@@ -10,10 +10,15 @@ import NotFound from './pages/NotFound.vue';
 import EmployeeDetails from './pages/EmployeeDetails.vue';
 //import { employees } from './data/employees';
 
+// Инициализация Axios
 const axios = require('axios').default;
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
+
+// Массив для хранения сотрудников
 let employees = []
+
+// Получение данных сотрудников с сервера
 axios.get('http://localhost:3000/employees')
   .then(function (response) {
     employees = response.data;
@@ -22,8 +27,11 @@ axios.get('http://localhost:3000/employees')
   .catch(function (error) {
     console.log(error);
   });
+
+// Инициализация приложения после получения данных
 function init(employees){
-const routes = [  
+const routes = [
+  // Маршруты  
   { path: '/', component: MainPage },
   { path: '/employee-list', name: 'EmployeeList', component: EmployeeList, props: true },
   { path: '/add-employee', name: 'AddEmployee', component: AddEmployee },
