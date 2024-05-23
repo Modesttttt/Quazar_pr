@@ -8,13 +8,22 @@ import AddEmployee from './pages/AddEmployee.vue';
 import FiredEmployees from './pages/FiredEmployees.vue';
 import NotFound from './pages/NotFound.vue';
 import EmployeeDetails from './pages/EmployeeDetails.vue';
-import { employees } from './data/employees';
+//import { employees } from './data/employees';
 
+const axios = require('axios').default;
 Vue.config.productionTip = false;
-
 Vue.use(VueRouter);
-
-const routes = [
+let employees = []
+axios.get('http://localhost:3000/employees')
+  .then(function (response) {
+    employees = response.data;
+    init(employees);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+function init(employees){
+const routes = [  
   { path: '/', component: MainPage },
   { path: '/employee-list', name: 'EmployeeList', component: EmployeeList, props: true },
   { path: '/add-employee', name: 'AddEmployee', component: AddEmployee },
@@ -28,7 +37,12 @@ const router = new VueRouter({
   routes,
 });
 
+
 new Vue({
   router,
   render: h => h(App),
 }).$mount('#app');
+}
+
+
+

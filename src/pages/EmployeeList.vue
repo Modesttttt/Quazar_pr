@@ -3,11 +3,13 @@
       <router-view></router-view>
       <h1>Список сотрудников</h1>
       <button @click="toggleFilterForm">Показать/Скрыть фильтр</button>
+      <button @click="deleteEmployees">Уволить выбранных</button>
       <div style="margin-bottom: 15px;">{{ filteredEmployees.length }} из {{ employees.length }} сотрудников</div>
       <filter-form v-if="showFilterForm" @apply-filter="applyFilter" />
       <table>
         <thead>
           <tr>
+            <th><input type="checkbox" @click="selectAll"></th>
             <th> Имя</th>
             <th> Пол</th>
             <th> Дата рождения</th>
@@ -34,21 +36,20 @@
    import DataRow from '../components/DataRow.vue'
    import NewEmployeeForm from '../components/NewEmployeeForm.vue'
    import FilterForm from '../components/FilterForm.vue'
-   import { employees } from '../data/employees.js'
-   employees.forEach((employee, index=0) => {
-    employee.id = index + 1; 
-   });
+   //import { employees } from '../data/employees.js'
+   
    export default {
     components: { DataRow, NewEmployeeForm, FilterForm},
     data() {
      return {
-       employees: employees,
+       employees: [],
        showForm: false,
        showFilterForm: false,
        filteredEmployees:[],
      };
      
     },
+
     created() {
     if (this.$route.params.newEmployee) {
       const newEmployee = this.$route.params.newEmployee;
@@ -56,6 +57,14 @@
     }
     },
     methods: {
+      deleteEmployees() {
+        const selectedEmployees = this.filteredEmployees.filter(employee => employee.selected);
+        this.employees = this.employees.filter(employee => !selectedEmployees.includes(employee));
+        this.filteredEmployees = this.employees;
+      },
+      selectAll() {
+        this.filteredEmployees.forEach(employee => employee.selected = true);
+      },
       showAddEmployeeForm() {
         this.showForm = !this.showForm; 
       },
@@ -74,34 +83,39 @@
       this.showFilterForm = !this.showFilterForm;
       },
       applyFilter(filter) {
-      const { name, gender, organisation, job_title, isFired } = filter;
-  
-      this.filteredEmployees = this.employees.filter(employee => { 
-      let matches = true;
-  
-      if (name && !employee.name.toLowerCase().includes(name.toLowerCase())) { 
-      matches = false;
-      }
-  
-      if (gender.length > 0 && !gender.includes(employee.sex.toString())) { 
-      matches = false;
-      }
-  
-      if (organisation && !employee.organisation.toLowerCase().includes(organisation.toLowerCase())) { 
-      matches = false; 
-      }
-  
-      if (job_title && ! employee.job_title.toLowerCase().includes(job_title.toLowerCase())) { 
-      matches = false; 
-      }
-  
-      if (isFired && !employee.fired) { 
-      matches = false; 
-      }
-  
-      return matches; 
+
+      this.filteredEmployees = this.employees.filter(employee => {
+        let matches = true;
+
+        if (filter.name && !employee.name.toLowerCase().includes(filter.name.toLowerCase())) {
+          matches = false;
+        }
+
+        if (filter.gender.length > 0 && !filter.gender.includes(employee.sex.toString())) {
+          matches = false;
+        }
+
+        if (filter.organisation && !employee.organisation.toLowerCase().includes(filter.organisation.toLowerCase())) {
+          matches = false;
+        }
+
+        if (filter.job_title && !employee.job_title.toLowerCase().includes(filter.job_title.toLowerCase())) {
+          matches = false;
+        }
+
+        if (filter.isFired && !employee.fired) {
+          matches = false;
+        }
+
+
+        return matches;
       });
-      },
+
+
+    },
+
+
+
     }
    };
    </script>

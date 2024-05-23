@@ -1,6 +1,6 @@
 <template>
-  <tr @click="viewEmployeeDetails">
-    <td>{{ employee.name }}</td>
+  <tr>
+    <td @click="viewEmployeeDetails">{{ employee.name }}</td>
     <td>{{ formatGender(employee.sex) }}</td>
     <td>{{ formatDate(employee.birth_date) }}</td>
     <td>{{ employee.organisation }}</td>
@@ -8,7 +8,6 @@
     <td>
       <span v-if="employee.fired">уволен</span>
     </td>
-    <button @click="updateFired">Уволить</button>
   </tr>
 </template>
 
