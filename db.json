@@ -1,93 +1,546 @@
 {
-    "employees":[
+  "employees": [
     {
-      "id":1,
-      "name": "Александренков Евгений Анатольевич",
-      "birth_date": 456861600,
+      "id": "1",
+      "name": "Александренкв Евгений Анатольевич",
+      "birth_date": "1984-06-24",
       "sex": 0,
       "organisation": "ООО \"Тест\"",
       "job_title": "Водитель",
       "fired": true
     },
     {
-        "id":2,
-        "name": "Афанасьев Дмитрий Алексеевич",
-        "birth_date": -157698000,
-        "sex": 0,
-        "organisation": "ИП Алексеев В.И.",
-        "job_title": "Грузчик",
-        "fired": false
-      },
-      {
-        "id":3,
-        "name": "Ложкина Елена Борисовна",
-        "birth_date": 248295600,
-        "sex": 1,
-        "organisation": "ООО \"Медицина\"",
-        "job_title": "Врач",
-        "fired": false
-      },
-      {
-        "id":4,
-        "name": "Бондаренко Артем Васильевич",
-        "birth_date": 841255200,
-        "sex": 0,
-        "organisation": "ООО \"Залесье\"",
-        "job_title": "Инженер-химик",
-        "fired": true
-      },
-      {
-        "id":5,
-        "name": "Акулов Евгений Анатольевич",
-        "birth_date": 465328800,
-        "sex": 0,
-        "organisation": "ООО \"Партнёр\"",
-        "job_title": "Водитель",
-        "fired": false
-      },
-      {
-        "id":6,
-        "name": "Кошкина Оксана Валерьевна",
-        "birth_date": 913921200,
-        "sex": 1,
-        "organisation": "ИП Яковлева Н.С.",
-        "job_title": "Бухгалтер",
-        "fired": false
-      },
-      {
-        "id":7,
-        "name": "Кузнецов Сергей Викторович",
-        "birth_date": -149922000,
-        "sex": 0,
-        "organisation": "ООО \"Тест\"",
-        "job_title": "Водитель",
-        "fired": false
-      },
-      {
-        "id":8,
-        "name": "Загородных Дмитрий Дмитриевич",
-        "birth_date": 499719600,
-        "sex": 0,
-        "organisation": "ООО \"Красный бор\"",
-        "job_title": "Водитель",
-        "fired": false
-      },
-      {
-        "id":9,
-        "name": "Плюшкин Иван Аркадьевич",
-        "birth_date": 975697200,
-        "sex": 0,
-        "organisation": "ООО \"Автозапчасти\"",
-        "job_title": "Механик",
-        "fired": true
-      },
-      {
-        "id":10,
-        "name": "Александренкова Жанна Георгиевна",
-        "birth_date": 932752800,
-        "sex": 1,
-        "organisation": "ИП Ларин А.С.",
-        "job_title": "Менеджер",
-        "fired": true
-      }]
+      "id": "2",
+      "name": "Афанасв Дмитрий Алексеевич",
+      "birth_date": "1965-01-02",
+      "sex": 0,
+      "organisation": "ИП Алексеев В.И.",
+      "job_title": "Грузчик",
+      "fired": false
+    },
+    {
+      "id": "3",
+      "name": "Ложкина Елена Борисовна",
+      "birth_date": "1977-11-14",
+      "sex": 1,
+      "organisation": "ООО \"Медицина\"",
+      "job_title": "Врач",
+      "fired": "true"
+    },
+    {
+      "id": "4",
+      "name": "Бондаренко Артем Васильевич",
+      "birth_date": 841255200,
+      "sex": 0,
+      "organisation": "ООО \"Залесье\"",
+      "job_title": "Инженер-химик",
+      "fired": true
+    },
+    {
+      "id": "5",
+      "name": "Акулов Евгений Анатольевич",
+      "birth_date": 465328800,
+      "sex": 0,
+      "organisation": "ООО \"Партнёр\"",
+      "job_title": "Водитель",
+      "fired": false
+    },
+    {
+      "id": "6",
+      "name": "Кошкиа Оксана Валерьевна",
+      "birth_date": "1998-12-18",
+      "sex": 1,
+      "organisation": "ИП Яковлева Н.С.",
+      "job_title": "Бухгалтер",
+      "fired": false
+    },
+    {
+      "id": "7",
+      "name": "Кузнецов Сергей Викторович",
+      "birth_date": -149922000,
+      "sex": 0,
+      "organisation": "ООО \"Тест\"",
+      "job_title": "Водитель",
+      "fired": false
+    },
+    {
+      "id": "8",
+      "name": "Загородных Дмитрий Дмитриевич",
+      "birth_date": 499719600,
+      "sex": 0,
+      "organisation": "ООО \"Красный бор\"",
+      "job_title": "Водитель",
+      "fired": false
+    },
+    {
+      "id": "9",
+      "name": "Плюшкин Иван Аркадьевич",
+      "birth_date": 975697200,
+      "sex": 0,
+      "organisation": "ООО \"Автозапчасти\"",
+      "job_title": "Механик",
+      "fired": true
+    },
+    {
+      "id": "10",
+      "name": "Александренкова Жанна Георгиевна",
+      "birth_date": 932752800,
+      "sex": 1,
+      "organisation": "ИП Ларин А.С.",
+      "job_title": "Менеджер",
+      "fired": true
+    },
+    {
+      "id": "11",
+      "name": "Иванов Петр Алексеевич",
+      "birth_date": 975697200,
+      "sex": 0,
+      "organisation": "ООО \"Альфа\"",
+      "job_title": "Менеджер",
+      "fired": false
+    },
+    {
+      "id": "12",
+      "name": "Смирнова Мария Сергеевна",
+      "birth_date": 932752800,
+      "sex": 1,
+      "organisation": "ЗАО \"Бета\"",
+      "job_title": "Инженер-химик",
+      "fired": false
+    },
+    {
+      "id": "13",
+      "name": "Кузнецов Михаил Дмитриевич",
+      "birth_date": 887529600,
+      "sex": 0,
+      "organisation": "ИП Васильев П.В.",
+      "job_title": "Водитель",
+      "fired": false
+    },
+    {
+      "id": "14",
+      "name": "Петрова Екатерина Владимировна",
+      "birth_date": 904742400,
+      "sex": 1,
+      "organisation": "ООО \"Гамма\"",
+      "job_title": "Инженер-химик",
+      "fired": false
+    },
+    {
+      "id": "15",
+      "name": "Васильев Андрей Юрьевич",
+      "birth_date": 852000000,
+      "sex": 0,
+      "organisation": "АО \"Дельта\"",
+      "job_title": "Водитель",
+      "fired": false
+    },
+    {
+      "id": "16",
+      "name": "Соболева Анна Павловна",
+      "birth_date": 955276800,
+      "sex": 1,
+      "organisation": "ИП Петров И.С.",
+      "job_title": "Грузчик",
+      "fired": false
+    },
+    {
+      "id": "17",
+      "name": "Романов Алексей Николаевич",
+      "birth_date": 915148800,
+      "sex": 0,
+      "organisation": "ООО \"Эпсилон\"",
+      "job_title": "Водитель",
+      "fired": false
+    },
+    {
+      "id": "18",
+      "name": "Горбачева Виктория Александровна",
+      "birth_date": 894720000,
+      "sex": 1,
+      "organisation": "ЗАО \"Зета\"",
+      "job_title": "Грузчик",
+      "fired": false
+    },
+    {
+      "id": "19",
+      "name": "Плюшкин Даниил Аркадьевич",
+      "birth_date": 975697200,
+      "sex": 0,
+      "organisation": "ООО \"Автозапчасти\"",
+      "job_title": "Инженер-химик",
+      "fired": true
+    },
+    {
+      "id": "20",
+      "name": "Александренкова Инна Георгиевна",
+      "birth_date": 932752800,
+      "sex": 1,
+      "organisation": "ИП Ларин А.С.",
+      "job_title": "Инженер-химик",
+      "fired": true
+    },
+    {
+      "id": "21",
+      "name": "Федоров Даниил Владимирович",
+      "birth_date": 985900800,
+      "sex": 0,
+      "organisation": "АО \"Тета\"",
+      "job_title": "Грузчик",
+      "fired": false
+    },
+    {
+      "id": "22",
+      "name": "Борисова Софья Андреевна",
+      "birth_date": 943958400,
+      "sex": 1,
+      "organisation": "ИП Сидоров В.П.",
+      "job_title": "Врач",
+      "fired": false
+    },
+    {
+      "id": "23",
+      "name": "Соловьев Егор Романович",
+      "birth_date": 925104000,
+      "sex": 0,
+      "organisation": "ООО \"Иота\"",
+      "job_title": "Врач",
+      "fired": false
+    },
+    {
+      "id": "24",
+      "name": "Захарова Алиса Сергеевна",
+      "birth_date": 962073600,
+      "sex": 1,
+      "organisation": "ЗАО \"Каппа\"",
+      "job_title": "Врач",
+      "fired": false
+    },
+    {
+      "id": "25",
+      "name": "Орлов Максим Леонидович",
+      "birth_date": 867312000,
+      "sex": 0,
+      "organisation": "ИП Иванов С.А.",
+      "job_title": "Грузчик",
+      "fired": false
+    },
+    {
+      "id": "26",
+      "name": "Ершова Елизавета Дмитриевна",
+      "birth_date": 948672000,
+      "sex": 1,
+      "organisation": "ООО \"Лямбда\"",
+      "job_title": "Менеджер",
+      "fired": false
+    },
+    {
+      "id": "27",
+      "name": "Морозов Артемий Павлович",
+      "birth_date": 983433600,
+      "sex": 0,
+      "organisation": "АО \"Мю\"",
+      "job_title": "Грузчик",
+      "fired": false
+    },
+    {
+      "id": "28",
+      "name": "Гусева Вероника Викторовна",
+      "birth_date": 920400000,
+      "sex": 1,
+      "organisation": "ИП Васильев А.В.",
+      "job_title": "Врач",
+      "fired": false
+    },
+    {
+      "id": "29",
+      "name": "Новиков Даниил Евгеньевич",
+      "birth_date": 959616000,
+      "sex": 0,
+      "organisation": "ЗАО \"Ню\"",
+      "job_title": "Менеджер",
+      "fired": false
+    },
+    {
+      "id": "30",
+      "name": "Смирнова Полина Александровна",
+      "birth_date": 978393600,
+      "sex": 1,
+      "organisation": "ИП Петров В.С.",
+      "job_title": "Менеджер",
+      "fired": false
+    }
+  ],
+  "medexams": [
+    {
+      "id": "1",
+      "employeeID": "1",
+      "doctor_name": "Лодкина Елена Борисовна",
+      "temperature": 36.6,
+      "pressure_systolic": 120,
+      "pressure_diastolic": 80,
+      "status": "Успешно"
+    },
+    {
+      "id": "2",
+      "employeeID": "2",
+      "doctor_name": "Иванов Иван Иванович",
+      "temperature": 36.8,
+      "pressure_systolic": 122,
+      "pressure_diastolic": 78,
+      "status": "Успешно"
+    },
+    {
+      "id": "3",
+      "employeeID": "3",
+      "doctor_name": "Петров Петр Петрович",
+      "temperature": 36,
+      "pressure_systolic": 118,
+      "pressure_diastolic": 82,
+      "status": "Успешно"
+    },
+    {
+      "id": "4",
+      "employeeID": "4",
+      "doctor_name": "Сидорова Анна Сергеевна",
+      "temperature": 34.6,
+      "pressure_systolic": 124,
+      "pressure_diastolic": 76,
+      "status": "Успешно"
+    },
+    {
+      "id": "5",
+      "employeeID": "5",
+      "doctor_name": "Козлова Мария Ивановна",
+      "temperature": 36.6,
+      "pressure_systolic": 116,
+      "pressure_diastolic": 84,
+      "status": "Успешно"
+    },
+    {
+      "id": "6",
+      "employeeID": "6",
+      "doctor_name": "Никитин Алексей Владимирович",
+      "temperature": 36.2,
+      "pressure_systolic": 126,
+      "pressure_diastolic": 74,
+      "status": "Успешно"
+    },
+    {
+      "id": "7",
+      "employeeID": "7",
+      "doctor_name": "Кузнецова Екатерина Дмитриевна",
+      "temperature": 35.2,
+      "pressure_systolic": 114,
+      "pressure_diastolic": 86,
+      "status": "Успешно"
+    },
+    {
+      "id": "8",
+      "employeeID": "8",
+      "doctor_name": "Александров Сергей Александрович",
+      "temperature": 36.6,
+      "pressure_systolic": 128,
+      "pressure_diastolic": 72,
+      "status": "Успешно"
+    },
+    {
+      "id": "9",
+      "employeeID": "9",
+      "doctor_name": "Смирнова Ольга Николаевна",
+      "temperature": 36.6,
+      "pressure_systolic": 112,
+      "pressure_diastolic": 88,
+      "status": "Успешно"
+    },
+    {
+      "id": "10",
+      "employeeID": "10",
+      "doctor_name": "Васильев Андрей Васильевич",
+      "temperature": 36.3,
+      "pressure_systolic": 130,
+      "pressure_diastolic": 70,
+      "status": "Успешно"
+    },
+    {
+      "id": "11",
+      "employeeID": "11",
+      "doctor_name": "Павлова Елена Александровна",
+      "temperature": 35.8,
+      "pressure_systolic": 110,
+      "pressure_diastolic": 90,
+      "status": "Успешно"
+    },
+    {
+      "id": "12",
+      "employeeID": "12",
+      "doctor_name": "Федоров Дмитрий Павлович",
+      "temperature": 35.4,
+      "pressure_systolic": 132,
+      "pressure_diastolic": 68,
+      "status": "Успешно"
+    },
+    {
+      "id": "13",
+      "employeeID": "13",
+      "doctor_name": "Михайлова Анна Игоревна",
+      "temperature": 36.1,
+      "pressure_systolic": 108,
+      "pressure_diastolic": 92,
+      "status": "Успешно"
+    },
+    {
+      "id": "14",
+      "employeeID": "14",
+      "doctor_name": "Комаров Игорь Владимирович",
+      "temperature": 36.7,
+      "pressure_systolic": 134,
+      "pressure_diastolic": 66,
+      "status": "Успешно"
+    },
+    {
+      "id": "15",
+      "employeeID": "15",
+      "doctor_name": "Лебедева Татьяна Сергеевна",
+      "temperature": 35.6,
+      "pressure_systolic": 106,
+      "pressure_diastolic": 94,
+      "status": "Успешно"
+    },
+    {
+      "id": "16",
+      "employeeID": "16",
+      "doctor_name": "Захаров Сергей Владимирович",
+      "temperature": 34.6,
+      "pressure_systolic": 136,
+      "pressure_diastolic": 64,
+      "status": "Успешно"
+    },
+    {
+      "id": "17",
+      "employeeID": "17",
+      "doctor_name": "Антонова Анна Васильевна",
+      "temperature": 36,
+      "pressure_systolic": 104,
+      "pressure_diastolic": 96,
+      "status": "Успешно"
+    },
+    {
+      "id": "18",
+      "employeeID": "18",
+      "doctor_name": "Григорьев Владимир Александрович",
+      "temperature": 36.8,
+      "pressure_systolic": 138,
+      "pressure_diastolic": 62,
+      "status": "Успешно"
+    },
+    {
+      "id": "19",
+      "employeeID": "19",
+      "doctor_name": "Сергеева Елена Владимировна",
+      "temperature": 35.4,
+      "pressure_systolic": 102,
+      "pressure_diastolic": 98,
+      "status": "Успешно"
+    },
+    {
+      "id": "20",
+      "employeeID": "20",
+      "doctor_name": "Романов Александр Игоревич",
+      "temperature": 35.9,
+      "pressure_systolic": 140,
+      "pressure_diastolic": 60,
+      "status": "Успешно"
+    },
+    {
+      "id": "21",
+      "employeeID": "21",
+      "doctor_name": "Денисова Ольга Александровна",
+      "temperature": 35.6,
+      "pressure_systolic": 100,
+      "pressure_diastolic": 100,
+      "status": "Успешно"
+    },
+    {
+      "id": "22",
+      "employeeID": "22",
+      "doctor_name": "Поляков Дмитрий Иванович",
+      "temperature": 36.2,
+      "pressure_systolic": 142,
+      "pressure_diastolic": 58,
+      "status": "Успешно"
+    },
+    {
+      "id": "23",
+      "employeeID": "23",
+      "doctor_name": "Савельева Анна Дмитриевна",
+      "temperature": 37.2,
+      "pressure_systolic": 98,
+      "pressure_diastolic": 102,
+      "status": "Успешно"
+    },
+    {
+      "id": "24",
+      "employeeID": "24",
+      "doctor_name": "Калинина Екатерина Андреевна",
+      "temperature": 34.6,
+      "pressure_systolic": 144,
+      "pressure_diastolic": 56,
+      "status": "Успешно"
+    },
+    {
+      "id": "25",
+      "employeeID": "25",
+      "doctor_name": "Абрамова Анна Алексеевна",
+      "temperature": 37,
+      "pressure_systolic": 96,
+      "pressure_diastolic": 104,
+      "status": "Успешно"
+    },
+    {
+      "id": "26",
+      "employeeID": "26",
+      "doctor_name": "Тимофеева Анна Владимировна",
+      "temperature": 36.9,
+      "pressure_systolic": 146,
+      "pressure_diastolic": 54,
+      "status": "Успешно"
+    },
+    {
+      "id": "27",
+      "employeeID": "27",
+      "doctor_name": "Федосеева Ольга Алексеевна",
+      "temperature": 36.4,
+      "pressure_systolic": 94,
+      "pressure_diastolic": 106,
+      "status": "Успешно"
+    },
+    {
+      "id": "28",
+      "employeeID": "28",
+      "doctor_name": "Куликова Елена Сергеевна",
+      "temperature": 36.3,
+      "pressure_systolic": 148,
+      "pressure_diastolic": 52,
+      "status": "Успешно"
+    },
+    {
+      "id": "29",
+      "employeeID": "29",
+      "doctor_name": "Медведева Анна Петровна",
+      "temperature": 35,
+      "pressure_systolic": 92,
+      "pressure_diastolic": 108,
+      "status": "Успешно"
+    },
+    {
+      "id": "30",
+      "employeeID": "30",
+      "doctor_name": "Селезнева Мария Андреевна",
+      "temperature": 36.2,
+      "pressure_systolic": 150,
+      "pressure_diastolic": 50,
+      "status": "Успешно"
+    }
+  ]
 }

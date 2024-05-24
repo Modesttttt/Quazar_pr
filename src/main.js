@@ -8,37 +8,24 @@ import AddEmployee from './pages/AddEmployee.vue';
 import FiredEmployees from './pages/FiredEmployees.vue';
 import NotFound from './pages/NotFound.vue';
 import EmployeeDetails from './pages/EmployeeDetails.vue';
-//import { employees } from './data/employees';
+import MedicalPage from './pages/MedicalPage.vue'
 
-// Инициализация Axios
-const axios = require('axios').default;
+
+
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
 
-// Массив для хранения сотрудников
-let employees = []
-
-// Получение данных сотрудников с сервера
-axios.get('http://localhost:3000/employees')
-  .then(function (response) {
-    employees = response.data;
-    init(employees);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-
-// Инициализация приложения после получения данных
-function init(employees){
+function init(){
 const routes = [
   // Маршруты  
   { path: '/', component: MainPage },
-  { path: '/employee-list', name: 'EmployeeList', component: EmployeeList, props: true },
+  { path: '/employee-list', name: 'EmployeeList', component: EmployeeList, props: {fired : false}},
   { path: '/add-employee', name: 'AddEmployee', component: AddEmployee },
-  { path: '/fired-employees', name: 'FiredEmployees', component: FiredEmployees, props : {employees : employees, fired : true}},
+  { path: '/fired-employees', name: 'FiredEmployees', component: FiredEmployees, props : { fired : true}},
   { path: '/404', name: '404', component: NotFound },
+  { path: '/medical', name : 'MedicalPage', component : MedicalPage},
   { path: '*', redirect: '/404' },
-  { path: '/employee-details/:id', name: 'employee-details', component: EmployeeDetails, props: (route) => ({ employee: employees[parseInt(route.params.id)], id : parseInt(route.params.id), employees : employees})}
+  { path: '/employee-details/:id', name: 'employee-details', component: EmployeeDetails, props: true}
 ];
 
 const router = new VueRouter({
@@ -52,5 +39,6 @@ new Vue({
 }).$mount('#app');
 }
 
+init()
 
 

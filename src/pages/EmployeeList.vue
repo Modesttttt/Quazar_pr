@@ -1,5 +1,5 @@
 <template>
-  <div class="app-wrapper">
+  <div class="app-wrapper" v-if="!loading">
     <router-view></router-view>
     <h1>Список сотрудников</h1>
 
@@ -7,16 +7,16 @@
     <button @click="toggleFilterForm">Показать/Скрыть фильтр</button>
     <!-- Кнопка для увольнения выбранных сотрудников -->
     <button @click="deleteEmployees">Уволить выбранных</button>
-    <div style="margin-bottom: 15px;">{{ filteredEmployees.length }} из {{ employees.length }} сотрудников</div>
+    <div style="margin-bottom: 15px;">{{ filteredEmployees.length }} из {{ employees.length }} сотрудников</div> 
 
     <!-- Форма фильтра, отображаемая при необходимости -->
     <filter-form v-if="showFilterForm" @apply-filter="applyFilter" />
 
-    <table>
+    <table class="table">
       <thead>
         <tr>
           <!-- Колонка для выбора всех сотрудников -->
-          <th><input type="checkbox" @click="selectAll"></th>
+          <!--<th><input type="checkbox" @click="selectAll"></th>-->
           <!-- Колонки для отображения информации о сотрудниках -->
           <th> Имя</th>
           <th> Пол</th>
@@ -28,28 +28,33 @@
       <tbody>
         <!-- Компонент DataRow для отображения информации о каждом сотруднике -->
         <data-row
-          v-for="employee in filteredEmployees"
-          :key="employee.name"
+          v-for="employee in (filteredEmployees != null ? filteredEmployees : employees)"
+          :key="employee.id"
           :employee="employee"
-          :id="employee.id"
           @update-fired="updateFired"
+          
         />
       </tbody>
     </table>
-      <!-- Форма для добавления нового сотрудника -->
-      <new-employee-form :show-form="showForm" @employee-added="onEmployeeAdded" />
+    <button @click="prevPage()" >Предыдущая</button>
+    <button @click="nextPage()" >Следующая</button>
     </div>
+    
+    <LoaderComponent v-else :loading="loading"></LoaderComponent>
    </template>
    
 <script>
 // Импорт необходимых компонентов
 import DataRow from '../components/DataRow.vue'
-import NewEmployeeForm from '../components/NewEmployeeForm.vue'
 import FilterForm from '../components/FilterForm.vue'
-
+import LoaderComponent from '../components/Loader.vue'
 export default {
   // Регистрация компонентов для использования в шаблоне
-  components: { DataRow, NewEmployeeForm, FilterForm },
+  components: { 
+    DataRow,  
+    FilterForm,
+    LoaderComponent 
+  },
   data() {
     return {
       // Массив для хранения всех сотрудников
@@ -60,14 +65,15 @@ export default {
       showFilterForm: false,
       // Массив для хранения отфильтрованных сотрудников
       filteredEmployees: [],
+      loading : true,
+      currentPage : 1,
+      viewedItems : 20,
     };
   },
   created() {
-    if (this.$route.params.newEmployee) {
-      const newEmployee = this.$route.params.newEmployee;
-      this.employees.push(newEmployee);
-    }
+    this.loadingPage()
   },
+
   methods: {
     // Метод для увольнения выбранных сотрудников
     deleteEmployees() {
@@ -124,22 +130,53 @@ export default {
       if (filter.isFired && !employee.fired) {
         matches = false;
       }
-
+      
 
       return matches;
     });
 
 
-  },
+    },
+    nextPage(){
+        this.currentPage++
+        this.loadEmployees()
+    },
+    prevPage(){
+        this.currentPage--
+        this.loadEmployees()
+    },
+    loadingPage(){
+      setTimeout(() => {
+                this.loadEmployees()
+            }, 2000);
+    },
 
-
-
-    }
+    loadEmployees(){
+      const params = ``
+      const axios = require('axios')
+      axios.get(`http://localhost:3000/employees${params}`)
+      .then((response)=> {
+        this.employees = response.data;
+        this.filteredEmployees = response.data;
+        this.loading = false;
+ 
+      })
+      .catch((error) => {
+        console.error('Ошибка при получении данных:', error);
+        this.loading = false;
+      });
+    },
+//?_page=${this.currentPage}&_per_page=${this.viewedItems}
+    },
+    
    };
    </script>
    
   
   <style>
+  table {
+    margin-top: 20px;
+  }
   button {
     background: #2d9c9c;
     color: #fff;

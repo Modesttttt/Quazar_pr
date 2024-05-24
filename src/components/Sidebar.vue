@@ -5,6 +5,7 @@
         <li><router-link :to="{name:'EmployeeList'}">Список сотрудников</router-link></li>
         <li><router-link :to="{name:'AddEmployee'}">Добавить сотрудника</router-link></li>
         <li><router-link :to="{name:'FiredEmployees'}">Уволенные сотрудники</router-link></li>
+        <li><router-link :to="{name:'MedicalPage'}">Медосмотры</router-link></li>
         <li><router-link :to="{name:'404'}">404</router-link></li>
       </ul>
     </div>

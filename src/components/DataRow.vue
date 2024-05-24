@@ -16,10 +16,10 @@
 
 <script>
 import dayjs from 'dayjs';
-
 export default {
   props: {
-    employee: Object // Объект сотрудника, переданный в компонент
+    id : Number,
+    employee: Object
   },
   methods: {
     // Метод для форматирования даты

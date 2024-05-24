@@ -19,7 +19,7 @@
       <!-- Поле для выбора должности -->
       <div>
         <label>Должность</label>
-        <select v-model="filter.job_title">
+        <select v-model="filter.job_title" class="select-menu">
           <!-- Варианты выбора должности -->
             <option value="Водитель">Водитель</option>
             <option value="Грузчик">Грузчик</option>
@@ -61,27 +61,33 @@
   </script>
   
 <style scoped>
+.filter-form input {
+  margin-top: 30px;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid #165a5f;
+  color: #fcfcfc;
+  font-size: 14px;
+  padding: 5px 8px;
+  outline: none;
+}
 label input[type=checkbox] {
 	opacity: 0;
 	height: 0;
   margin: auto;
 }
-input[type=text] {
-  width: 100%;
-  margin: 0 0;
-  box-sizing: border-box;
-  border-radius: 15%;
-}
+
 .filter-form {
   display: flex;
-  width: 1400px;
+  width: 1500px;
+  height: 80px;
   flex-wrap: wrap;
   margin: auto auto;
   justify-content: space-around;
 }
 
 .form-row {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .checkbox-group {
@@ -91,6 +97,14 @@ input[type=text] {
 
 .checkbox-group input[type='checkbox'] {
   margin-right: 5px;
+}
+
+.select-menu {
+  display: inline-block;
+}
+label{
+  margin-left: 10px;
+  margin-right: 8px;
 }
 </style>
   

@@ -1,5 +1,5 @@
 <template>
-  <div class="fired-employees">
+  <div class="fired-employees" v-if="!loading">
     <!-- Заголовок -->
     <h1>Уволенные сотрудники</h1>
     <!-- Таблица с информацией о сотрудниках -->
@@ -24,26 +24,41 @@
       </tbody>
     </table>
   </div>
+  <LoaderComponent v-else :loading="loading"></LoaderComponent>
 </template>
 
 <script>
 // Импорт компонента DataRow
 import DataRow from '../components/DataRow.vue';
+import LoaderComponent from '../components/Loader.vue'
+
+import axios from 'axios';
 
 export default {
-  // Регистрация компонента DataRow
   components: {
     DataRow,
+    LoaderComponent,
   },
-  // Прием данных сотрудников от родительского компонента
-  props: {
-    employees: Array,
+  data() {
+    return {
+      firedEmployees: [], // Массив для хранения уволенных сотрудников
+      loading : true,
+    };
   },
-  // Вычисление списка уволенных сотрудников
-  computed: {
-    firedEmployees() {
-      return this.employees.filter(employee => employee.fired);
-    },
+  created() {
+    this.loading = true;
+    // Получение списка уволенных сотрудников с сервера
+    axios.get('http://localhost:3000/employees?fired=true')
+      .then(response => {
+        this.firedEmployees = response.data;
+        setTimeout(() => {
+          this.loading = false;
+        }, 2000); 
+      })
+      .catch(error => {
+        console.error('Ошибка при получении данных:', error);
+        this.loading = false;
+      });
   },
 };
 </script>

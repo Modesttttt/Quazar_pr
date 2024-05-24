@@ -45,21 +45,32 @@
 
 export default {
   // Прием идентификатора сотрудника и списка сотрудников от родительского компонента
-  props: ['id', 'employees'],
+  props: [],
   data() {
     return {
       // Хранилище для отредактированных данных сотрудника
       editedEmployee: null,
       isEditing: false,
+      selectedEmployee: null,
     };
   },
-  computed: {
-    // Получение данных выбранного сотрудника на основе переданного идентификатора
-    selectedEmployee() {
-      return this.employees.find(employee => employee.id === parseInt(this.id)) || {};
-    }
+  created() {
+    this.fetchEmployeeData();
   },
+
   methods: {
+    fetchEmployeeData() {
+      const employeeId = this.$route.params.id
+      const axios = require('axios')
+      axios.get(`http://localhost:3000/employees/${employeeId}`)
+      .then((response)=> {
+        this.selectedEmployee = response.data;
+      })
+      .catch((error) => {
+        console.error('Ошибка при получении данных:', error);
+        this.loading = false;
+      });
+    },
     // Функция для форматирования даты
     date(_date) {
       if (!_date) return null;
@@ -79,9 +90,16 @@ export default {
     },
     // Функция для сохранения изменений
     saveEmployee() {
-      const index = this.employees.findIndex(employee => employee.id === this.selectedEmployee.id);
-      this.$set(this.employees, index, { ...this.editedEmployee });
-      this.isEditing = false;
+        const axios = require('axios')
+        axios.put(`http://localhost:3000/employees/${this.selectedEmployee.id}`, this.editedEmployee)
+          .then((response) => {
+            console.log('Данные успешно обновлены:', response.data);
+            this.selectedEmployee = { ...this.editedEmployee };
+            this.isEditing = false;
+          })
+          .catch((error) => {
+            console.error('Ошибка при обновлении данных:', error);
+          });
     },
     // Функция для отмены изменений
     cancelEdit() {
