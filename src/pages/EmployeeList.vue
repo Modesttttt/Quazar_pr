@@ -67,7 +67,7 @@ export default {
       filteredEmployees: [],
       loading : true,
       currentPage : 1,
-      viewedItems : 20,
+      viewedItems : 10,
     };
   },
   created() {
@@ -146,25 +146,25 @@ export default {
         this.loadEmployees()
     },
     loadingPage(){
-      setTimeout(() => {
-                this.loadEmployees()
-            }, 2000);
+    setTimeout(() => {
+    this.loadEmployees()
+    }, 2000);
     },
 
     loadEmployees(){
-      const params = ``
-      const axios = require('axios')
-      axios.get(`http://localhost:3000/employees${params}`)
-      .then((response)=> {
-        this.employees = response.data;
-        this.filteredEmployees = response.data;
-        this.loading = false;
- 
-      })
-      .catch((error) => {
-        console.error('Ошибка при получении данных:', error);
-        this.loading = false;
-      });
+    const params = `?_page=${this.currentPage}&_per_page=${this.viewedItems}`
+    const axios = require('axios')
+    axios.get(`http://localhost:3000/employees${params}`)
+    .then((response)=> {
+    this.employees = response.data.data;
+    this.filteredEmployees = response.data.data;
+    this.loading = false;
+
+    })
+    .catch((error) => {
+    console.error('Ошибка при получении данных:', error);
+    this.loading = false;
+    });
     },
 //?_page=${this.currentPage}&_per_page=${this.viewedItems}
     },
